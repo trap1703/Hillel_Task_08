@@ -1,0 +1,660 @@
+amazon-ebs: output will be in this color.
+
+==> amazon-ebs: Prevalidating any provided VPC information
+==> amazon-ebs: Prevalidating AMI Name: packer-linux-aws-demo-1578055652
+    amazon-ebs: Found Image ID: ami-00a208c7cdba991ea
+==> amazon-ebs: Creating temporary keypair: packer_5e0f37e4-bfa6-aa95-4a4a-bc994e8d3146
+==> amazon-ebs: Creating temporary security group for this instance: packer_5e0f37e8-c878-1c84-6523-7fc6d280c156
+==> amazon-ebs: Authorizing access to port 22 from [0.0.0.0/0] in the temporary security groups...
+==> amazon-ebs: Launching a source AWS instance...
+==> amazon-ebs: Adding tags to source instance
+    amazon-ebs: Adding tag: "Name": "Packer Builder"
+    amazon-ebs: Instance ID: i-072d1478fe8bbc357
+==> amazon-ebs: Waiting for instance (i-072d1478fe8bbc357) to become ready...
+==> amazon-ebs: Using ssh communicator to connect: 3.80.211.90
+==> amazon-ebs: Waiting for SSH to become available...
+==> amazon-ebs: Connected to SSH!
+==> amazon-ebs: Uploading ./welcome.txt => /home/ubuntu/
+welcome.txt 19 B / 19 B [==============================================================================================================================================================================] 100.00% 2s
+==> amazon-ebs: Provisioning with shell script: /tmp/packer-shell640836672
+    amazon-ebs: total 12
+    amazon-ebs: drwxrwxr-x 3 ubuntu ubuntu 4096 Jan  3 12:48 .
+    amazon-ebs: drwxr-xr-x 6 ubuntu ubuntu 4096 Jan  3 12:48 ..
+    amazon-ebs: drwxrwxr-x 2 ubuntu ubuntu 4096 Jan  3 12:48 777
+==> amazon-ebs: Uploading ./cookbook/777 => /home/ubuntu/
+==> amazon-ebs: Provisioning with shell script: /tmp/packer-shell797399849
+    amazon-ebs: total 44
+    amazon-ebs: drwxr-xr-x 7 ubuntu ubuntu 4096 Jan  3 12:48 .
+    amazon-ebs: drwxr-xr-x 3 root   root   4096 Jan  3 12:48 ..
+    amazon-ebs: -rw-r--r-- 1 ubuntu ubuntu  220 Apr  4  2018 .bash_logout
+    amazon-ebs: -rw-r--r-- 1 ubuntu ubuntu 3771 Apr  4  2018 .bashrc
+    amazon-ebs: drwx------ 2 ubuntu ubuntu 4096 Jan  3 12:48 .cache
+    amazon-ebs: drwx------ 3 ubuntu ubuntu 4096 Jan  3 12:48 .gnupg
+    amazon-ebs: -rw-r--r-- 1 ubuntu ubuntu  807 Apr  4  2018 .profile
+    amazon-ebs: drwx------ 2 ubuntu ubuntu 4096 Jan  3 12:48 .ssh
+    amazon-ebs: drwxr-xr-x 8 ubuntu ubuntu 4096 Jan  3 12:48 777
+    amazon-ebs: drwxrwxr-x 3 ubuntu ubuntu 4096 Jan  3 12:48 cookbook
+    amazon-ebs: -rw-r--r-- 1 ubuntu ubuntu   19 Jan  3 12:48 welcome.txt
+    amazon-ebs: WELCOME TO PACKER!
+==> amazon-ebs: Provisioning with shell script: ./example.sh
+    amazon-ebs: hello
+==> amazon-ebs: Provisioning with chef-solo
+    amazon-ebs: Installing Chef...
+==> amazon-ebs:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+==> amazon-ebs:                                  Dload  Upload   Total   Spent    Left  Speed
+==> amazon-ebs: 100 23248  100 23248    0     0   472k      0 --:--:-- --:--:-- --:--:--  472k
+    amazon-ebs: ubuntu 18.04 x86_64
+    amazon-ebs: Getting information for chef stable  for ubuntu...
+    amazon-ebs: downloading https://omnitruck.chef.io/stable/chef/metadata?v=&p=ubuntu&pv=18.04&m=x86_64
+    amazon-ebs:   to file /tmp/install.sh.1680/metadata.txt
+    amazon-ebs: trying wget...
+    amazon-ebs: sha1    3a4bdede928fe5393f5c57c562039e90f59027d1
+    amazon-ebs: sha256  4a1cdf3de1f33e09bb8e4c7ffc31fb8d6c853858894da7eed0e5ee5a6abd8309
+    amazon-ebs: url     https://packages.chef.io/files/stable/chef/15.6.10/ubuntu/18.04/chef_15.6.10-1_amd64.deb
+    amazon-ebs: version 15.6.10
+    amazon-ebs: downloaded metadata file looks valid...
+    amazon-ebs: downloading https://packages.chef.io/files/stable/chef/15.6.10/ubuntu/18.04/chef_15.6.10-1_amd64.deb
+    amazon-ebs:   to file /tmp/install.sh.1680/chef_15.6.10-1_amd64.deb
+    amazon-ebs: trying wget...
+    amazon-ebs: Comparing checksum with sha256sum...
+    amazon-ebs:
+    amazon-ebs: WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING
+    amazon-ebs:
+    amazon-ebs: You are installing a package without a version pin.  If you are installing
+    amazon-ebs: on production servers via an automated process this is DANGEROUS and you will
+    amazon-ebs: be upgraded without warning on new releases, even to new major releases.
+    amazon-ebs: Letting the version float is only appropriate in desktop, test, development or
+    amazon-ebs: CI/CD environments.
+    amazon-ebs:
+    amazon-ebs: WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING
+    amazon-ebs:
+    amazon-ebs: Installing chef
+    amazon-ebs: installing with dpkg...
+    amazon-ebs: Selecting previously unselected package chef.
+    amazon-ebs: (Reading database ... 56545 files and directories currently installed.)
+    amazon-ebs: Preparing to unpack .../chef_15.6.10-1_amd64.deb ...
+    amazon-ebs: Unpacking chef (15.6.10-1) ...
+    amazon-ebs: Setting up chef (15.6.10-1) ...
+    amazon-ebs: Thank you for installing Chef Infra Client! For help getting started visit https://learn.chef.io
+    amazon-ebs: Creating directory: /tmp/packer-chef-solo
+    amazon-ebs: Creating directory: /tmp/packer-chef-solo/cookbooks-0
+    amazon-ebs: Creating configuration file 'solo.rb'
+    amazon-ebs: Creating JSON attribute file
+    amazon-ebs: Executing Chef: sudo chef-solo --no-color -c /tmp/packer-chef-solo/solo.rb -j /tmp/packer-chef-solo/node.json
+    amazon-ebs: Starting Chef Infra Client, version 15.6.10
+    amazon-ebs: resolving cookbooks for run list: ["777"]
+    amazon-ebs: Synchronizing Cookbooks:
+    amazon-ebs:   - 777 (0.1.0)
+    amazon-ebs: Installing Cookbook Gems:
+    amazon-ebs: Compiling Cookbooks...
+    amazon-ebs: Converging 20 resources
+    amazon-ebs: Recipe: 777::server
+    amazon-ebs:   * apt_update[update] action periodic
+    amazon-ebs:     - update new lists of packages
+    amazon-ebs:     * directory[/var/lib/apt/periodic] action create (up to date)
+    amazon-ebs:     * directory[/etc/apt/apt.conf.d] action create (up to date)
+    amazon-ebs:     * file[/etc/apt/apt.conf.d/15update-stamp] action create_if_missing (up to date)
+    amazon-ebs:     * execute[apt-get -q update] action run
+    amazon-ebs:       - execute ["apt-get", "-q", "update"]
+    amazon-ebs:
+    amazon-ebs:   * apt_package[apache2, mysql-server, python-mysqldb, php7.2-mysql, php7.2, libapache2-mod-php7.2, python-mysqldb, php-curl, php-gd, php-mbstring, php-xml, php-xmlrpc, php-soap, php-intl, php-zip] action install
+    amazon-ebs:     - install version 2.4.29-1ubuntu4.11 of package apache2
+    amazon-ebs:     - install version 5.7.28-0ubuntu0.18.04.4 of package mysql-server
+    amazon-ebs:     - install version 1.3.10-1build1 of package python-mysqldb
+    amazon-ebs:     - install version 7.2.24-0ubuntu0.18.04.1 of package php7.2-mysql
+    amazon-ebs:     - install version 7.2.24-0ubuntu0.18.04.1 of package php7.2
+    amazon-ebs:     - install version 7.2.24-0ubuntu0.18.04.1 of package libapache2-mod-php7.2
+    amazon-ebs:     - install version 1.3.10-1build1 of package python-mysqldb
+    amazon-ebs:     - install version 1:7.2+60ubuntu1 of package php-curl
+    amazon-ebs:     - install version 1:7.2+60ubuntu1 of package php-gd
+    amazon-ebs:     - install version 1:7.2+60ubuntu1 of package php-mbstring
+    amazon-ebs:     - install version 1:7.2+60ubuntu1 of package php-xml
+    amazon-ebs:     - install version 1:7.2+60ubuntu1 of package php-xmlrpc
+    amazon-ebs:     - install version 1:7.2+60ubuntu1 of package php-soap
+    amazon-ebs:     - install version 1:7.2+60ubuntu1 of package php-intl
+    amazon-ebs:     - install version 1:7.2+60ubuntu1 of package php-zip
+    amazon-ebs:   * apt_package[mysql-client, ruby, ruby-all-dev, build-essential, libmysqlclient-dev] action install
+    amazon-ebs:     - install version 5.7.28-0ubuntu0.18.04.4 of package mysql-client
+    amazon-ebs:     - install version 1:2.5.1 of package ruby
+    amazon-ebs:     - install version 1:2.5.1 of package ruby-all-dev
+    amazon-ebs:     - install version 12.4ubuntu1 of package build-essential
+    amazon-ebs:     - install version 5.7.28-0ubuntu0.18.04.4 of package libmysqlclient-dev
+    amazon-ebs:   * apt_package[php7.2-gd, php7.2-ssh2] action install
+    amazon-ebs:     - install version 1.1.2+0.13-1build1 of package php7.2-ssh2
+    amazon-ebs: Recipe: 777::mysql
+    amazon-ebs:   * bash[mysql_secure_installation] action run (skipped due to not_if)
+    amazon-ebs:   * bash[mysql_database_create] action run
+    amazon-ebs:     - execute "bash"  "/tmp/chef-script20200103-1767-kn9kl8"
+    amazon-ebs:   * bash[mysql_user_create] action run
+==> amazon-ebs: --2020-01-03 12:50:45--  https://wordpress.org/latest.tar.gz
+==> amazon-ebs: Resolving wordpress.org (wordpress.org)... 198.143.164.252
+==> amazon-ebs: Connecting to wordpress.org (wordpress.org)|198.143.164.252|:443... connected.
+    amazon-ebs:     - execute "bash"  "/tmp/chef-script20200103-1767-1xab548"
+    amazon-ebs: Recipe: 777::conf
+==> amazon-ebs: HTTP request sent, awaiting response... 200 OK
+==> amazon-ebs: Length: 12389281 (12M) [application/octet-stream]
+==> amazon-ebs: Saving to: ‘latest.tar.gz’
+==> amazon-ebs:
+==> amazon-ebs:      0K .......... .......... .......... .......... ..........  0% 1.23M 10s
+==> amazon-ebs:     50K .......... .......... .......... .......... ..........  0% 2.15M 7s
+==> amazon-ebs:    100K .......... .......... .......... .......... ..........  1% 4.27M 6s
+==> amazon-ebs:    150K .......... .......... .......... .......... ..........  1% 6.09M 5s
+==> amazon-ebs:    200K .......... .......... .......... .......... ..........  2% 6.03M 4s
+==> amazon-ebs:    250K .......... .......... .......... .......... ..........  2% 5.36M 4s
+==> amazon-ebs:    300K .......... .......... .......... .......... ..........  2% 9.24M 3s
+==> amazon-ebs:    350K .......... .......... .......... .......... ..........  3% 11.5M 3s
+==> amazon-ebs:    400K .......... .......... .......... .......... ..........  3% 13.6M 3s
+==> amazon-ebs:    450K .......... .......... .......... .......... ..........  4% 13.2M 3s
+==> amazon-ebs:    500K .......... .......... .......... .......... ..........  4% 12.9M 3s
+==> amazon-ebs:    550K .......... .......... .......... .......... ..........  4% 14.4M 2s
+==> amazon-ebs:    600K .......... .......... .......... .......... ..........  5% 19.5M 2s
+==> amazon-ebs:    650K .......... .......... .......... .......... ..........  5% 16.1M 2s
+==> amazon-ebs:    700K .......... .......... .......... .......... ..........  6% 21.2M 2s
+==> amazon-ebs:    750K .......... .......... .......... .......... ..........  6% 8.74M 2s
+==> amazon-ebs:    800K .......... .......... .......... .......... ..........  7% 27.6M 2s
+==> amazon-ebs:    850K .......... .......... .......... .......... ..........  7% 27.3M 2s
+==> amazon-ebs:    900K .......... .......... .......... .......... ..........  7% 25.8M 2s
+==> amazon-ebs:    950K .......... .......... .......... .......... ..........  8% 25.3M 2s
+==> amazon-ebs:   1000K .......... .......... .......... .......... ..........  8% 48.3M 2s
+==> amazon-ebs:   1050K .......... .......... .......... .......... ..........  9% 34.8M 1s
+==> amazon-ebs:   1100K .......... .......... .......... .......... ..........  9% 28.3M 1s
+==> amazon-ebs:   1150K .......... .......... .......... .......... ..........  9% 31.1M 1s
+==> amazon-ebs:   1200K .......... .......... .......... .......... .......... 10% 38.7M 1s
+==> amazon-ebs:   1250K .......... .......... .......... .......... .......... 10% 35.4M 1s
+==> amazon-ebs:   1300K .......... .......... .......... .......... .......... 11% 36.7M 1s
+==> amazon-ebs:   1350K .......... .......... .......... .......... .......... 11% 55.3M 1s
+==> amazon-ebs:   1400K .......... .......... .......... .......... .......... 11% 39.8M 1s
+==> amazon-ebs:   1450K .......... .......... .......... .......... .......... 12% 49.0M 1s
+==> amazon-ebs:   1500K .......... .......... .......... .......... .......... 12% 6.07M 1s
+==> amazon-ebs:   1550K .......... .......... .......... .......... .......... 13%  200M 1s
+==> amazon-ebs:   1600K .......... .......... .......... .......... .......... 13% 29.5M 1s
+==> amazon-ebs:   1650K .......... .......... .......... .......... .......... 14% 58.4M 1s
+==> amazon-ebs:   1700K .......... .......... .......... .......... .......... 14%  229M 1s
+==> amazon-ebs:   1750K .......... .......... .......... .......... .......... 14% 2.37M 1s
+==> amazon-ebs:   1800K .......... .......... .......... .......... .......... 15% 36.9M 1s
+==> amazon-ebs:   1850K .......... .......... .......... .......... .......... 15%  233M 1s
+==> amazon-ebs:   1900K .......... .......... .......... .......... .......... 16%  244M 1s
+==> amazon-ebs:   1950K .......... .......... .......... .......... .......... 16%  204M 1s
+==> amazon-ebs:   2000K .......... .......... .......... .......... .......... 16%  230M 1s
+==> amazon-ebs:   2050K .......... .......... .......... .......... .......... 17%  240M 1s
+==> amazon-ebs:   2100K .......... .......... .......... .......... .......... 17%  238M 1s
+==> amazon-ebs:   2150K .......... .......... .......... .......... .......... 18%  212M 1s
+==> amazon-ebs:   2200K .......... .......... .......... .......... .......... 18%  251M 1s
+==> amazon-ebs:   2250K .......... .......... .......... .......... .......... 19%  245M 1s
+==> amazon-ebs:   2300K .......... .......... .......... .......... .......... 19%  242M 1s
+==> amazon-ebs:   2350K .......... .......... .......... .......... .......... 19%  205M 1s
+==> amazon-ebs:   2400K .......... .......... .......... .......... .......... 20%  240M 1s
+==> amazon-ebs:   2450K .......... .......... .......... .......... .......... 20%  251M 1s
+==> amazon-ebs:   2500K .......... .......... .......... .......... .......... 21%  250M 1s
+==> amazon-ebs:   2550K .......... .......... .......... .......... .......... 21%  219M 1s
+==> amazon-ebs:   2600K .......... .......... .......... .......... .......... 21% 64.9M 1s
+==> amazon-ebs:   2650K .......... .......... .......... .......... .......... 22% 41.4M 1s
+==> amazon-ebs:   2700K .......... .......... .......... .......... .......... 22% 51.4M 1s
+==> amazon-ebs:   2750K .......... .......... .......... .......... .......... 23% 44.7M 1s
+==> amazon-ebs:   2800K .......... .......... .......... .......... .......... 23% 52.6M 1s
+==> amazon-ebs:   2850K .......... .......... .......... .......... .......... 23%  241M 1s
+==> amazon-ebs:   2900K .......... .......... .......... .......... .......... 24%  243M 1s
+==> amazon-ebs:   2950K .......... .......... .......... .......... .......... 24%  213M 1s
+==> amazon-ebs:   3000K .......... .......... .......... .......... .......... 25%  224M 1s
+==> amazon-ebs:   3050K .......... .......... .......... .......... .......... 25%  238M 1s
+==> amazon-ebs:   3100K .......... .......... .......... .......... .......... 26%  251M 1s
+==> amazon-ebs:   3150K .......... .......... .......... .......... .......... 26% 1.77M 1s
+==> amazon-ebs:   3200K .......... .......... .......... .......... .......... 26% 40.7M 1s
+==> amazon-ebs:   3250K .......... .......... .......... .......... .......... 27% 50.9M 1s
+==> amazon-ebs:   3300K .......... .......... .......... .......... .......... 27% 50.1M 1s
+==> amazon-ebs:   3350K .......... .......... .......... .......... .......... 28% 84.4M 1s
+==> amazon-ebs:   3400K .......... .......... .......... .......... .......... 28%  207M 1s
+==> amazon-ebs:   3450K .......... .......... .......... .......... .......... 28%  248M 1s
+==> amazon-ebs:   3500K .......... .......... .......... .......... .......... 29%  237M 1s
+==> amazon-ebs:   3550K .......... .......... .......... .......... .......... 29%  203M 1s
+==> amazon-ebs:   3600K .......... .......... .......... .......... .......... 30%  246M 1s
+==> amazon-ebs:   3650K .......... .......... .......... .......... .......... 30%  251M 1s
+==> amazon-ebs:   3700K .......... .......... .......... .......... .......... 30%  249M 1s
+==> amazon-ebs:   3750K .......... .......... .......... .......... .......... 31%  217M 1s
+==> amazon-ebs:   3800K .......... .......... .......... .......... .......... 31%  244M 0s
+==> amazon-ebs:   3850K .......... .......... .......... .......... .......... 32%  245M 0s
+==> amazon-ebs:   3900K .......... .......... .......... .......... .......... 32% 1.88M 1s
+==> amazon-ebs:   3950K .......... .......... .......... .......... .......... 33% 29.1M 1s
+==> amazon-ebs:   4000K .......... .......... .......... .......... .......... 33% 50.9M 1s
+==> amazon-ebs:   4050K .......... .......... .......... .......... .......... 33% 50.8M 1s
+==> amazon-ebs:   4100K .......... .......... .......... .......... .......... 34% 57.4M 1s
+==> amazon-ebs:   4150K .......... .......... .......... .......... .......... 34%  218M 0s
+==> amazon-ebs:   4200K .......... .......... .......... .......... .......... 35%  246M 0s
+==> amazon-ebs:   4250K .......... .......... .......... .......... .......... 35%  240M 0s
+==> amazon-ebs:   4300K .......... .......... .......... .......... .......... 35%  247M 0s
+==> amazon-ebs:   4350K .......... .......... .......... .......... .......... 36%  205M 0s
+==> amazon-ebs:   4400K .......... .......... .......... .......... .......... 36% 1.79M 1s
+==> amazon-ebs:   4450K .......... .......... .......... .......... .......... 37% 43.2M 0s
+==> amazon-ebs:   4500K .......... .......... .......... .......... .......... 37% 48.9M 0s
+==> amazon-ebs:   4550K .......... .......... .......... .......... .......... 38% 55.3M 0s
+==> amazon-ebs:   4600K .......... .......... .......... .......... .......... 38%  246M 0s
+==> amazon-ebs:   4650K .......... .......... .......... .......... .......... 38%  216M 0s
+==> amazon-ebs:   4700K .......... .......... .......... .......... .......... 39%  239M 0s
+==> amazon-ebs:   4750K .......... .......... .......... .......... .......... 39%  196M 0s
+==> amazon-ebs:   4800K .......... .......... .......... .......... .......... 40%  248M 0s
+==> amazon-ebs:   4850K .......... .......... .......... .......... .......... 40% 2.56M 0s
+==> amazon-ebs:   4900K .......... .......... .......... .......... .......... 40% 5.21M 0s
+==> amazon-ebs:   4950K .......... .......... .......... .......... .......... 41% 44.2M 0s
+==> amazon-ebs:   5000K .......... .......... .......... .......... .......... 41% 51.8M 0s
+==> amazon-ebs:   5050K .......... .......... .......... .......... .......... 42%  242M 0s
+==> amazon-ebs:   5100K .......... .......... .......... .......... .......... 42%  249M 0s
+==> amazon-ebs:   5150K .......... .......... .......... .......... .......... 42%  200M 0s
+==> amazon-ebs:   5200K .......... .......... .......... .......... .......... 43%  206M 0s
+==> amazon-ebs:   5250K .......... .......... .......... .......... .......... 43% 2.50M 0s
+==> amazon-ebs:   5300K .......... .......... .......... .......... .......... 44% 7.24M 0s
+==> amazon-ebs:   5350K .......... .......... .......... .......... .......... 44% 44.6M 0s
+==> amazon-ebs:   5400K .......... .......... .......... .......... .......... 45% 86.6M 0s
+==> amazon-ebs:   5450K .......... .......... .......... .......... .......... 45%  246M 0s
+==> amazon-ebs:   5500K .......... .......... .......... .......... .......... 45%  248M 0s
+==> amazon-ebs:   5550K .......... .......... .......... .......... .......... 46%  204M 0s
+==> amazon-ebs:   5600K .......... .......... .......... .......... .......... 46% 1.76M 0s
+==> amazon-ebs:   5650K .......... .......... .......... .......... .......... 47% 50.5M 0s
+==> amazon-ebs:   5700K .......... .......... .......... .......... .......... 47%  119M 0s
+==> amazon-ebs:   5750K .......... .......... .......... .......... .......... 47%  218M 0s
+==> amazon-ebs:   5800K .......... .......... .......... .......... .......... 48%  250M 0s
+==> amazon-ebs:   5850K .......... .......... .......... .......... .......... 48%  231M 0s
+==> amazon-ebs:   5900K .......... .......... .......... .......... .......... 49%  244M 0s
+==> amazon-ebs:   5950K .......... .......... .......... .......... .......... 49% 1.63M 0s
+==> amazon-ebs:   6000K .......... .......... .......... .......... .......... 50% 37.6M 0s
+==> amazon-ebs:   6050K .......... .......... .......... .......... .......... 50% 60.3M 0s
+==> amazon-ebs:   6100K .......... .......... .......... .......... .......... 50%  242M 0s
+==> amazon-ebs:   6150K .......... .......... .......... .......... .......... 51%  217M 0s
+==> amazon-ebs:   6200K .......... .......... .......... .......... .......... 51%  237M 0s
+==> amazon-ebs:   6250K .......... .......... .......... .......... .......... 52%  241M 0s
+==> amazon-ebs:   6300K .......... .......... .......... .......... .......... 52%  247M 0s
+==> amazon-ebs:   6350K .......... .......... .......... .......... .......... 52%  184M 0s
+==> amazon-ebs:   6400K .......... .......... .......... .......... .......... 53%  239M 0s
+==> amazon-ebs:   6450K .......... .......... .......... .......... .......... 53%  248M 0s
+==> amazon-ebs:   6500K .......... .......... .......... .......... .......... 54%  250M 0s
+==> amazon-ebs:   6550K .......... .......... .......... .......... .......... 54%  217M 0s
+==> amazon-ebs:   6600K .......... .......... .......... .......... .......... 54%  251M 0s
+==> amazon-ebs:   6650K .......... .......... .......... .......... .......... 55%  232M 0s
+==> amazon-ebs:   6700K .......... .......... .......... .......... .......... 55%  254M 0s
+==> amazon-ebs:   6750K .......... .......... .......... .......... .......... 56% 1.62M 0s
+==> amazon-ebs:   6800K .......... .......... .......... .......... .......... 56% 49.4M 0s
+==> amazon-ebs:   6850K .......... .......... .......... .......... .......... 57% 51.0M 0s
+==> amazon-ebs:   6900K .......... .......... .......... .......... .......... 57% 50.7M 0s
+==> amazon-ebs:   6950K .......... .......... .......... .......... .......... 57% 80.4M 0s
+==> amazon-ebs:   7000K .......... .......... .......... .......... .......... 58%  245M 0s
+==> amazon-ebs:   7050K .......... .......... .......... .......... .......... 58%  242M 0s
+==> amazon-ebs:   7100K .......... .......... .......... .......... .......... 59%  249M 0s
+==> amazon-ebs:   7150K .......... .......... .......... .......... .......... 59%  191M 0s
+==> amazon-ebs:   7200K .......... .......... .......... .......... .......... 59%  241M 0s
+==> amazon-ebs:   7250K .......... .......... .......... .......... .......... 60%  252M 0s
+==> amazon-ebs:   7300K .......... .......... .......... .......... .......... 60% 1.84M 0s
+==> amazon-ebs:   7350K .......... .......... .......... .......... .......... 61% 39.2M 0s
+==> amazon-ebs:   7400K .......... .......... .......... .......... .......... 61% 49.8M 0s
+==> amazon-ebs:   7450K .......... .......... .......... .......... .......... 61%  101M 0s
+==> amazon-ebs:   7500K .......... .......... .......... .......... .......... 62%  247M 0s
+==> amazon-ebs:   7550K .......... .......... .......... .......... .......... 62%  189M 0s
+==> amazon-ebs:   7600K .......... .......... .......... .......... .......... 63%  244M 0s
+==> amazon-ebs:   7650K .......... .......... .......... .......... .......... 63%  240M 0s
+==> amazon-ebs:   7700K .......... .......... .......... .......... .......... 64% 1.82M 0s
+==> amazon-ebs:   7750K .......... .......... .......... .......... .......... 64% 38.3M 0s
+==> amazon-ebs:   7800K .......... .......... .......... .......... .......... 64% 49.8M 0s
+==> amazon-ebs:   7850K .......... .......... .......... .......... .......... 65%  130M 0s
+==> amazon-ebs:   7900K .......... .......... .......... .......... .......... 65%  243M 0s
+==> amazon-ebs:   7950K .......... .......... .......... .......... .......... 66%  198M 0s
+==> amazon-ebs:   8000K .......... .......... .......... .......... .......... 66%  236M 0s
+==> amazon-ebs:   8050K .......... .......... .......... .......... .......... 66% 1.76M 0s
+==> amazon-ebs:   8100K .......... .......... .......... .......... .......... 67% 42.4M 0s
+==> amazon-ebs:   8150K .......... .......... .......... .......... .......... 67% 44.3M 0s
+==> amazon-ebs:   8200K .......... .......... .......... .......... .......... 68%  109M 0s
+==> amazon-ebs:   8250K .......... .......... .......... .......... .......... 68%  242M 0s
+==> amazon-ebs:   8300K .......... .......... .......... .......... .......... 69%  242M 0s
+==> amazon-ebs:   8350K .......... .......... .......... .......... .......... 69%  196M 0s
+==> amazon-ebs:   8400K .......... .......... .......... .......... .......... 69%  220M 0s
+==> amazon-ebs:   8450K .......... .......... .......... .......... .......... 70% 1.77M 0s
+==> amazon-ebs:   8500K .......... .......... .......... .......... .......... 70% 48.2M 0s
+==> amazon-ebs:   8550K .......... .......... .......... .......... .......... 71% 50.5M 0s
+==> amazon-ebs:   8600K .......... .......... .......... .......... .......... 71%  251M 0s
+==> amazon-ebs:   8650K .......... .......... .......... .......... .......... 71%  237M 0s
+==> amazon-ebs:   8700K .......... .......... .......... .......... .......... 72%  239M 0s
+==> amazon-ebs:   8750K .......... .......... .......... .......... .......... 72%  200M 0s
+==> amazon-ebs:   8800K .......... .......... .......... .......... .......... 73%  249M 0s
+==> amazon-ebs:   8850K .......... .......... .......... .......... .......... 73% 1.78M 0s
+==> amazon-ebs:   8900K .......... .......... .......... .......... .......... 73% 50.1M 0s
+==> amazon-ebs:   8950K .......... .......... .......... .......... .......... 74% 39.9M 0s
+==> amazon-ebs:   9000K .......... .......... .......... .......... .......... 74%  185M 0s
+==> amazon-ebs:   9050K .......... .......... .......... .......... .......... 75% 89.2M 0s
+==> amazon-ebs:   9100K .......... .......... .......... .......... .......... 75%  205M 0s
+==> amazon-ebs:   9150K .......... .......... .......... .......... .......... 76%  197M 0s
+==> amazon-ebs:   9200K .......... .......... .......... .......... .......... 76%  240M 0s
+==> amazon-ebs:   9250K .......... .......... .......... .......... .......... 76%  248M 0s
+==> amazon-ebs:   9300K .......... .......... .......... .......... .......... 77%  242M 0s
+==> amazon-ebs:   9350K .......... .......... .......... .......... .......... 77%  218M 0s
+==> amazon-ebs:   9400K .......... .......... .......... .......... .......... 78%  242M 0s
+==> amazon-ebs:   9450K .......... .......... .......... .......... .......... 78%  246M 0s
+==> amazon-ebs:   9500K .......... .......... .......... .......... .......... 78%  238M 0s
+==> amazon-ebs:   9550K .......... .......... .......... .......... .......... 79% 1.59M 0s
+==> amazon-ebs:   9600K .......... .......... .......... .......... .......... 79% 31.6M 0s
+==> amazon-ebs:   9650K .......... .......... .......... .......... .......... 80% 48.9M 0s
+==> amazon-ebs:   9700K .......... .......... .......... .......... .......... 80% 50.4M 0s
+==> amazon-ebs:   9750K .......... .......... .......... .......... .......... 80% 44.8M 0s
+==> amazon-ebs:   9800K .......... .......... .......... .......... .......... 81%  154M 0s
+==> amazon-ebs:   9850K .......... .......... .......... .......... .......... 81%  234M 0s
+==> amazon-ebs:   9900K .......... .......... .......... .......... .......... 82%  248M 0s
+==> amazon-ebs:   9950K .......... .......... .......... .......... .......... 82%  203M 0s
+==> amazon-ebs:  10000K .......... .......... .......... .......... .......... 83%  247M 0s
+==> amazon-ebs:  10050K .......... .......... .......... .......... .......... 83%  236M 0s
+==> amazon-ebs:  10100K .......... .......... .......... .......... .......... 83%  238M 0s
+==> amazon-ebs:  10150K .......... .......... .......... .......... .......... 84%  204M 0s
+==> amazon-ebs:  10200K .......... .......... .......... .......... .......... 84% 1.01M 0s
+==> amazon-ebs:  10250K .......... .......... .......... .......... .......... 85% 2.05M 0s
+==> amazon-ebs:  10300K .......... .......... .......... .......... .......... 85%  190K 0s
+==> amazon-ebs:  10350K .......... .......... .......... .......... .......... 85%  261K 0s
+==> amazon-ebs:  10400K .......... .......... .......... .......... .......... 86%  349K 0s
+==> amazon-ebs:  10450K .......... .......... .......... .......... .......... 86%  234K 0s
+==> amazon-ebs:  10500K .......... .......... .......... .......... .......... 87%  223M 0s
+==> amazon-ebs:  10550K .......... .......... .......... .......... .......... 87%  196M 0s
+==> amazon-ebs:  10600K .......... .......... .......... .......... .......... 88%  241M 0s
+==> amazon-ebs:  10650K .......... .......... .......... .......... .......... 88%  251M 0s
+==> amazon-ebs:  10700K .......... .......... .......... .......... .......... 88%  229M 0s
+==> amazon-ebs:  10750K .......... .......... .......... .......... .......... 89%  197M 0s
+==> amazon-ebs:  10800K .......... .......... .......... .......... .......... 89%  242M 0s
+==> amazon-ebs:  10850K .......... .......... .......... .......... .......... 90%  224M 0s
+==> amazon-ebs:  10900K .......... .......... .......... .......... .......... 90%  239M 0s
+==> amazon-ebs:  10950K .......... .......... .......... .......... .......... 90%  216M 0s
+==> amazon-ebs:  11000K .......... .......... .......... .......... .......... 91%  221M 0s
+==> amazon-ebs:  11050K .......... .......... .......... .......... .......... 91%  230M 0s
+==> amazon-ebs:  11100K .......... .......... .......... .......... .......... 92%  227M 0s
+==> amazon-ebs:  11150K .......... .......... .......... .......... .......... 92%  182M 0s
+==> amazon-ebs:  11200K .......... .......... .......... .......... .......... 92%  237M 0s
+==> amazon-ebs:  11250K .......... .......... .......... .......... .......... 93% 1.70M 0s
+==> amazon-ebs:  11300K .......... .......... .......... .......... .......... 93% 50.3M 0s
+==> amazon-ebs:  11350K .......... .......... .......... .......... .......... 94% 42.1M 0s
+==> amazon-ebs:  11400K .......... .......... .......... .......... .......... 94% 51.2M 0s
+==> amazon-ebs:  11450K .......... .......... .......... .......... .......... 95% 56.7M 0s
+==> amazon-ebs:  11500K .......... .......... .......... .......... .......... 95%  236M 0s
+==> amazon-ebs:  11550K .......... .......... .......... .......... .......... 95% 4.46M 0s
+==> amazon-ebs:  11600K .......... .......... .......... .......... .......... 96% 7.62M 0s
+==> amazon-ebs:  11650K .......... .......... .......... .......... .......... 96%  158M 0s
+==> amazon-ebs:  11700K .......... .......... .......... .......... .......... 97%  228M 0s
+==> amazon-ebs:  11750K .......... .......... .......... .......... .......... 97%  218M 0s
+==> amazon-ebs:  11800K .......... .......... .......... .......... .......... 97%  240M 0s
+==> amazon-ebs:  11850K .......... .......... .......... .......... .......... 98%  232M 0s
+==> amazon-ebs:  11900K .......... .......... .......... .......... .......... 98% 9.37M 0s
+==> amazon-ebs:  11950K .......... .......... .......... .......... .......... 99% 43.9M 0s
+==> amazon-ebs:  12000K .......... .......... .......... .......... .......... 99% 74.3M 0s
+    amazon-ebs:   * ruby_block[install_wordpress] action run
+    amazon-ebs:     - execute the ruby block install_wordpress
+    amazon-ebs:   * file[/var/www/wp-config.php] action create
+==> amazon-ebs:  12050K .......... .......... .......... .......... ........  100%  253M=1.6s
+==> amazon-ebs:
+    amazon-ebs:     - create new file /var/www/wp-config.php
+==> amazon-ebs: 2020-01-03 12:50:47 (7.42 MB/s) - ‘latest.tar.gz’ saved [12389281/12389281]
+==> amazon-ebs:
+    amazon-ebs:   * template[/var/www/wp-config.php] action create
+    amazon-ebs:     - update content in file /var/www/wp-config.php from e3b0c4 to c9bc09
+    amazon-ebs:     --- /var/www/wp-config.php  2020-01-03 12:50:47.570373927 +0000
+    amazon-ebs:     +++ /var/www/.chef-wp-config20200103-1767-1vdt2pp.php       2020-01-03 12:50:47.582373535 +0000
+    amazon-ebs:     @@ -1 +1,91 @@
+    amazon-ebs:     +<?php
+    amazon-ebs:     +/**
+    amazon-ebs:     + * The base configuration for WordPress
+    amazon-ebs:     + *
+    amazon-ebs:     + * The wp-config.php creation script uses this file during the
+    amazon-ebs:     + * installation. You don't have to use the web site, you can
+    amazon-ebs:     + * copy this file to "wp-config.php" and fill in the values.
+    amazon-ebs:     + *
+    amazon-ebs:     + * This file contains the following configurations:
+    amazon-ebs:     + *
+    amazon-ebs:     + * * MySQL settings
+    amazon-ebs:     + * * Secret keys
+    amazon-ebs:     + * * Database table prefix
+    amazon-ebs:     + * * ABSPATH
+    amazon-ebs:     + *
+    amazon-ebs:     + * @link https://codex.wordpress.org/Editing_wp-config.php
+    amazon-ebs:     + *
+    amazon-ebs:     + * @package WordPress
+    amazon-ebs:     + */
+    amazon-ebs:     +
+    amazon-ebs:     +// ** MySQL settings - You can get this info from your web host ** //
+    amazon-ebs:     +/** The name of the database for WordPress */
+    amazon-ebs:     +define( 'DB_NAME', 'dexter500' );
+    amazon-ebs:     +
+    amazon-ebs:     +/** MySQL database username */
+    amazon-ebs:     +define( 'DB_USER', 'wordpressuser' );
+    amazon-ebs:     +
+    amazon-ebs:     +/** MySQL database password */
+    amazon-ebs:     +define( 'DB_PASSWORD', 'Qwerty6543' );
+    amazon-ebs:     +
+    amazon-ebs:     +/** MySQL hostname */
+    amazon-ebs:     +define( 'DB_HOST', 'localhost' );
+    amazon-ebs:     +
+    amazon-ebs:     +/** Database Charset to use in creating database tables. */
+    amazon-ebs:     +define( 'DB_CHARSET', 'utf8' );
+    amazon-ebs:     +
+    amazon-ebs:     +/** The Database Collate type. Don't change this if in doubt. */
+    amazon-ebs:     +define( 'DB_COLLATE', '' );
+    amazon-ebs:     +
+    amazon-ebs:     +/**#@+
+    amazon-ebs:     + * Authentication Unique Keys and Salts.
+    amazon-ebs:     + *
+    amazon-ebs:     + * Change these to different unique phrases!
+    amazon-ebs:     + * You can generate these using the {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}
+    amazon-ebs:     + * You can change these at any point in time to invalidate all existing cookies. This will force all users to have to log in again.
+    amazon-ebs:     + *
+    amazon-ebs:     + * @since 2.6.0
+    amazon-ebs:     + */
+    amazon-ebs:     +define( 'AUTH_KEY',         'put your unique phrase here' );
+    amazon-ebs:     +define( 'SECURE_AUTH_KEY',  'put your unique phrase here' );
+    amazon-ebs:     +define( 'LOGGED_IN_KEY',    'put your unique phrase here' );
+    amazon-ebs:     +define( 'NONCE_KEY',        'put your unique phrase here' );
+    amazon-ebs:     +define( 'AUTH_SALT',        'put your unique phrase here' );
+    amazon-ebs:     +define( 'SECURE_AUTH_SALT', 'put your unique phrase here' );
+    amazon-ebs:     +define( 'LOGGED_IN_SALT',   'put your unique phrase here' );
+    amazon-ebs:     +define( 'NONCE_SALT',       'put your unique phrase here' );
+    amazon-ebs:     +
+    amazon-ebs:     +/**#@-*/
+    amazon-ebs:     +
+    amazon-ebs:     +/**
+    amazon-ebs:     + * WordPress Database Table prefix.
+    amazon-ebs:     + *
+    amazon-ebs:     + * You can have multiple installations in one database if you give each
+    amazon-ebs:     + * a unique prefix. Only numbers, letters, and underscores please!
+    amazon-ebs:     + */
+    amazon-ebs:     +$table_prefix = 'wp_';
+    amazon-ebs:     +
+    amazon-ebs:     +/**
+    amazon-ebs:     + * For developers: WordPress debugging mode.
+    amazon-ebs:     + *
+    amazon-ebs:     + * Change this to true to enable the display of notices during development.
+    amazon-ebs:     + * It is strongly recommended that plugin and theme developers use WP_DEBUG
+    amazon-ebs:     + * in their development environments.
+    amazon-ebs:     + *
+    amazon-ebs:     + * For information on other constants that can be used for debugging,
+    amazon-ebs:     + * visit the Codex.
+    amazon-ebs:     + *
+    amazon-ebs:     + * @link https://codex.wordpress.org/Debugging_in_WordPress
+    amazon-ebs:     + */
+    amazon-ebs:     +define( 'WP_DEBUG', false );
+    amazon-ebs:     +
+    amazon-ebs:     +/* That's all, stop editing! Happy publishing. */
+    amazon-ebs:     +
+    amazon-ebs:     +/** Absolute path to the WordPress directory. */
+    amazon-ebs:     +if ( ! defined( 'ABSPATH' ) ) {
+    amazon-ebs:     +        define( 'ABSPATH', dirname( __FILE__ ) . '/' );
+    amazon-ebs:     +}
+    amazon-ebs:     +
+    amazon-ebs:     +/** Sets up WordPress vars and included files. */
+    amazon-ebs:     +require_once( ABSPATH . 'wp-settings.php' );
+    amazon-ebs:   * template[/etc/apache2/sites-enabled/000-default.conf] action create[2020-01-03T12:50:47+00:00] WARN: File /etc/apache2/sites-enabled/000-default.conf managed by template[/etc/apache2/sites-enabled/000-default.conf] is really a symlink (to /etc/apache2/sites-available/000-default.conf). Managing the source file instead.
+    amazon-ebs: [2020-01-03T12:50:47+00:00] WARN: Disable this warning by setting `manage_symlink_source true` on the resource
+    amazon-ebs: [2020-01-03T12:50:47+00:00] WARN: In a future release, 'manage_symlink_source' will not be enabled by default
+    amazon-ebs:
+    amazon-ebs:     - update content in file /etc/apache2/sites-enabled/000-default.conf from fdd55a to 9ea21a
+    amazon-ebs:     --- /etc/apache2/sites-enabled/000-default.conf     2019-07-16 18:14:45.000000000 +0000
+    amazon-ebs:     +++ /etc/apache2/sites-enabled/.chef-000-default20200103-1767-kgoq7o.conf   2020-01-03 12:50:47.598373012 +0000
+    amazon-ebs:     @@ -1,31 +1,31 @@
+    amazon-ebs:      <VirtualHost *:80>
+    amazon-ebs:     -   # The ServerName directive sets the request scheme, hostname and port that
+    amazon-ebs:     -   # the server uses to identify itself. This is used when creating
+    amazon-ebs:     -   # redirection URLs. In the context of virtual hosts, the ServerName
+    amazon-ebs:     -   # specifies what hostname must appear in the request's Host: header to
+    amazon-ebs:     -   # match this virtual host. For the default virtual host (this file) this
+    amazon-ebs:     -   # value is not decisive as it is used as a last resort host regardless.
+    amazon-ebs:     -   # However, you must set it for any further virtual host explicitly.
+    amazon-ebs:     -   #ServerName www.example.com
+    amazon-ebs:     +        # The ServerName directive sets the request scheme, hostname and port that
+    amazon-ebs:     +        # the server uses to identify itself. This is used when creating
+    amazon-ebs:     +        # redirection URLs. In the context of virtual hosts, the ServerName
+    amazon-ebs:     +        # specifies what hostname must appear in the request's Host: header to
+    amazon-ebs:     +        # match this virtual host. For the default virtual host (this file) this
+    amazon-ebs:     +        # value is not decisive as it is used as a last resort host regardless.
+    amazon-ebs:     +        # However, you must set it for any further virtual host explicitly.
+    amazon-ebs:     +        #ServerName www.example.com
+    amazon-ebs:
+    amazon-ebs:     -   ServerAdmin webmaster@localhost
+    amazon-ebs:     -   DocumentRoot /var/www/html
+    amazon-ebs:     +        ServerAdmin webmaster@localhost
+    amazon-ebs:     +        DocumentRoot /var/www
+    amazon-ebs:
+    amazon-ebs:     -   # Available loglevels: trace8, ..., trace1, debug, info, notice, warn,
+    amazon-ebs:     -   # error, crit, alert, emerg.
+    amazon-ebs:     -   # It is also possible to configure the loglevel for particular
+    amazon-ebs:     -   # modules, e.g.
+    amazon-ebs:     -   #LogLevel info ssl:warn
+    amazon-ebs:     +        # Available loglevels: trace8, ..., trace1, debug, info, notice, warn,
+    amazon-ebs:     +        # error, crit, alert, emerg.
+    amazon-ebs:     +        # It is also possible to configure the loglevel for particular
+    amazon-ebs:     +        # modules, e.g.
+    amazon-ebs:     +        #LogLevel info ssl:warn
+    amazon-ebs:
+    amazon-ebs:     -   ErrorLog ${APACHE_LOG_DIR}/error.log
+    amazon-ebs:     -   CustomLog ${APACHE_LOG_DIR}/access.log combined
+    amazon-ebs:     +        ErrorLog ${APACHE_LOG_DIR}/error.log
+    amazon-ebs:     +        CustomLog ${APACHE_LOG_DIR}/access.log combined
+    amazon-ebs:
+    amazon-ebs:     -   # For most configuration files from conf-available/, which are
+    amazon-ebs:     -   # enabled or disabled at a global level, it is possible to
+    amazon-ebs:     -   # include a line for only one particular virtual host. For example the
+    amazon-ebs:     -   # following line enables the CGI configuration for this host only
+    amazon-ebs:     -   # after it has been globally disabled with "a2disconf".
+    amazon-ebs:     -   #Include conf-available/serve-cgi-bin.conf
+    amazon-ebs:     +        # For most configuration files from conf-available/, which are
+    amazon-ebs:     +        # enabled or disabled at a global level, it is possible to
+    amazon-ebs:     +        # include a line for only one particular virtual host. For example the
+    amazon-ebs:     +        # following line enables the CGI configuration for this host only
+    amazon-ebs:     +        # after it has been globally disabled with "a2disconf".
+    amazon-ebs:     +        #Include conf-available/serve-cgi-bin.conf
+    amazon-ebs:      </VirtualHost>
+    amazon-ebs:
+    amazon-ebs:      # vim: syntax=apache ts=4 sw=4 sts=4 sr noet
+    amazon-ebs:   * template[/etc/apache2/apache2.conf] action create
+    amazon-ebs:     - update content in file /etc/apache2/apache2.conf from 312efd to c46b90
+    amazon-ebs:     --- /etc/apache2/apache2.conf       2019-09-16 12:58:48.000000000 +0000
+    amazon-ebs:     +++ /etc/apache2/.chef-apache220200103-1767-1niqz9m.conf    2020-01-03 12:50:47.610372620 +0000
+    amazon-ebs:     @@ -16,16 +16,16 @@
+    amazon-ebs:      # It is split into several files forming the configuration hierarchy outlined
+    amazon-ebs:      # below, all located in the /etc/apache2/ directory:
+    amazon-ebs:      #
+    amazon-ebs:     -#  /etc/apache2/
+    amazon-ebs:     -#  |-- apache2.conf
+    amazon-ebs:     -#  |       `--  ports.conf
+    amazon-ebs:     -#  |-- mods-enabled
+    amazon-ebs:     -#  |       |-- *.load
+    amazon-ebs:     -#  |       `-- *.conf
+    amazon-ebs:     -#  |-- conf-enabled
+    amazon-ebs:     -#  |       `-- *.conf
+    amazon-ebs:     -#  `-- sites-enabled
+    amazon-ebs:     -#          `-- *.conf
+    amazon-ebs:     +#       /etc/apache2/
+    amazon-ebs:     +#       |-- apache2.conf
+    amazon-ebs:     +#       |       `--  ports.conf
+    amazon-ebs:     +#       |-- mods-enabled
+    amazon-ebs:     +#       |       |-- *.load
+    amazon-ebs:     +#       |       `-- *.conf
+    amazon-ebs:     +#       |-- conf-enabled
+    amazon-ebs:     +#       |       `-- *.conf
+    amazon-ebs:     +#       `-- sites-enabled
+    amazon-ebs:     +#               `-- *.conf
+    amazon-ebs:      #
+    amazon-ebs:      #
+    amazon-ebs:      # * apache2.conf is the main configuration file (this file). It puts the pieces
+    amazon-ebs:     @@ -157,26 +157,26 @@
+    amazon-ebs:      # your system is serving content from a sub-directory in /srv you must allow
+    amazon-ebs:      # access here, or in any related virtual host.
+    amazon-ebs:      <Directory />
+    amazon-ebs:     -   Options FollowSymLinks
+    amazon-ebs:     -   AllowOverride None
+    amazon-ebs:     -   Require all denied
+    amazon-ebs:     +        Options FollowSymLinks
+    amazon-ebs:     +        AllowOverride None
+    amazon-ebs:     +        Require all denied
+    amazon-ebs:      </Directory>
+    amazon-ebs:
+    amazon-ebs:      <Directory /usr/share>
+    amazon-ebs:     -   AllowOverride None
+    amazon-ebs:     -   Require all granted
+    amazon-ebs:     +        AllowOverride None
+    amazon-ebs:     +        Require all granted
+    amazon-ebs:      </Directory>
+    amazon-ebs:
+    amazon-ebs:      <Directory /var/www/>
+    amazon-ebs:     -   Options Indexes FollowSymLinks
+    amazon-ebs:     -   AllowOverride None
+    amazon-ebs:     -   Require all granted
+    amazon-ebs:     +        Options Indexes FollowSymLinks
+    amazon-ebs:     +        AllowOverride None
+    amazon-ebs:     +        Require all granted
+    amazon-ebs:      </Directory>
+    amazon-ebs:
+    amazon-ebs:      #<Directory /srv/>
+    amazon-ebs:     -#  Options Indexes FollowSymLinks
+    amazon-ebs:     -#  AllowOverride None
+    amazon-ebs:     -#  Require all granted
+    amazon-ebs:     +#       Options Indexes FollowSymLinks
+    amazon-ebs:     +#       AllowOverride None
+    amazon-ebs:     +#       Require all granted
+    amazon-ebs:      #</Directory>
+    amazon-ebs:
+    amazon-ebs:
+    amazon-ebs:     @@ -192,8 +192,8 @@
+    amazon-ebs:      # The following lines prevent .htaccess and .htpasswd files from being
+    amazon-ebs:      # viewed by Web clients.
+    amazon-ebs:      #
+    amazon-ebs:     -<FilesMatch "^\.ht">
+    amazon-ebs:     -   Require all denied
+    amazon-ebs:     +<FilesMatch "^\.ph">
+    amazon-ebs:     +        Require all denied
+    amazon-ebs:      </FilesMatch>
+    amazon-ebs:
+    amazon-ebs:
+    amazon-ebs:   * service[apache2] action restart
+    amazon-ebs:     - restart service service[apache2]
+    amazon-ebs:   * linux_user[tottoro] action create
+    amazon-ebs:     - create user tottoro
+    amazon-ebs:   * linux_user[wolf] action create
+    amazon-ebs:     - create user wolf
+    amazon-ebs:   * group[sudo] action modify
+    amazon-ebs:     - modify group sudo
+    amazon-ebs:     - add missing member(s): wolf
+    amazon-ebs:   * linux_user[cthulhu01] action create
+    amazon-ebs:     - create user cthulhu01
+    amazon-ebs:   * linux_user[cthulhu02] action create
+    amazon-ebs:     - create user cthulhu02
+    amazon-ebs:   * linux_user[cthulhu03] action create
+    amazon-ebs:     - create user cthulhu03
+    amazon-ebs:   * linux_user[cthulhu04] action create
+    amazon-ebs:     - create user cthulhu04
+    amazon-ebs:
+    amazon-ebs: Running handlers:
+    amazon-ebs: Running handlers complete
+    amazon-ebs: Chef Infra Client finished, 20/24 resources updated in 02 minutes 00 seconds
+==> amazon-ebs: Stopping the source instance...
+    amazon-ebs: Stopping instance
+==> amazon-ebs: Waiting for the instance to stop...
+==> amazon-ebs: Creating AMI packer-linux-aws-demo-1578055652 from instance i-072d1478fe8bbc357
+    amazon-ebs: AMI: ami-04bcfb3269c7333e1
+==> amazon-ebs: Waiting for AMI to become ready...
+==> amazon-ebs: Terminating the source AWS instance...
+==> amazon-ebs: Cleaning up any extra volumes...
+==> amazon-ebs: No volumes to clean up, skipping
+==> amazon-ebs: Deleting temporary security group...
+==> amazon-ebs: Deleting temporary keypair...
+Build 'amazon-ebs' finished.
+
+==> Builds finished. The artifacts of successful builds are:
+--> amazon-ebs: AMIs were created:
+us-east-1: ami-04bcfb3269c7333e1
